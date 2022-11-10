@@ -40,6 +40,6 @@ const Endereco = sequelize.define('endereco', {
   },
 });
 
-
+Endereco.sync({force:true})
 
 module.exports = Endereco;

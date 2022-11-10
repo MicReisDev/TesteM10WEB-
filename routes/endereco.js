@@ -13,7 +13,7 @@ router.get("/usuario/:id_usuario",(req,res)=>{
       dados:response
     })
   })
-    .then((err)=>{
+    .catch((err)=>{
       return res.status(400).json({
         codigo:400,
         status:"error",
@@ -31,7 +31,7 @@ router.get("/:id",(req,res)=>{
       dados:response
     })
   })
-    .then((err)=>{
+    .catch((err)=>{
       return res.status(400).json({
         codigo:400,
         status:"error",
@@ -58,7 +58,7 @@ Endereco.create({
     dados:response
   })
 })
-  .then((err)=>{
+  .catch((err)=>{
     return res.status(400).json({
       codigo:400,
       status:"error",
@@ -78,7 +78,7 @@ router.delete("/:id", (req,res)=>{
       dados:response
     })
   })
-    .then((err)=>{
+    .catch((err)=>{
       return res.status(400).json({
         codigo:400,
         status:"error",
@@ -107,7 +107,7 @@ router.put("/:id", (req,res)=>{
       dados:response
     })
   })
-    .then((err)=>{
+    .catch((err)=>{
       return res.status(400).json({
         codigo:400,
         status:"error",

@@ -31,7 +31,7 @@ router.get("/:id",(req,res)=>{
       mensagem: "Ação Realizada com sucesso",
       dados: response
     })
-  }).then((err)=>{
+  }).catch((err)=>{
     return res.status(400).json({
       codigo:400,
       status:"error",
@@ -43,11 +43,11 @@ router.get("/:id",(req,res)=>{
 
 router.post("/",(req,res)=>{
   Usuarios.findOne({where:{email:req.body.email}}).then((resp)=>{
-    if(resp.email===req.body.email){
+    if(resp && resp.email===req.body.email){
       return res.status(200).json({mensagem:"Usuario já cadastrado!"})
     }
     Usuarios.findOne({where:{cpf:req.body.cpf}}).then((respo)=>{
-      if(resp.cpf===req.body.cpf){
+      if(respo && respo.cpf===req.body.cpf){
         return res.status(200).json({mensagem:"Usuario já cadastrado!"})
       }
       Usuarios.create(
@@ -66,7 +66,7 @@ router.post("/",(req,res)=>{
           mensagem: "Ação Realizada com sucesso",
           dados: response
         })
-      }).then((err)=>{
+      }).catch((err)=>{
         return res.status(400).json({
           codigo:400,
           status:"error",
@@ -91,7 +91,7 @@ router.delete("/:id",(req,res)=>{
       dados: response
     })
   })
-  .then((err)=>{
+  .catch((err)=>{
     return res.status(400).json({
       codigo:400,
       status:"error",
